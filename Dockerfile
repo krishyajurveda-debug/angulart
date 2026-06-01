@@ -1,16 +1,10 @@
 FROM nginx:alpine
-
-# Remove everything
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copy your files
+# Copy the contents of skillforge into the app folder
 COPY skillforge/ /usr/share/nginx/html/app/
 
-# VERIFY: This line will print the file list in your Render logs
-# Look at this output in your next deployment to see where the files REALLY are
-RUN ls -R /usr/share/nginx/html/app/
-
-# Permissions
+# Set permissions
 RUN chown -R nginx:nginx /usr/share/nginx/html && \
     chmod -R 755 /usr/share/nginx/html
 
