@@ -3,11 +3,10 @@ FROM nginx:alpine
 # Clear default Nginx files
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copy your files directly to the root html folder
-# NOTE: Ensure you are copying the CONTENTS of 'skillforge', not the folder itself
-COPY skillforge/ /usr/share/nginx/html/
+# Copy the contents of the browse folder to the root of the server
+COPY skillforge/browse/ /usr/share/nginx/html/
 
-# Permissions
+# Fix permissions
 RUN chown -R nginx:nginx /usr/share/nginx/html && \
     chmod -R 755 /usr/share/nginx/html
 
