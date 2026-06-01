@@ -4,11 +4,11 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # 2. DEBUG: List files to confirm the path exists
-RUN ls -R skillforge
+#RUN ls -R skillforge
 
 # 3. Copy contents of the browse folder to the nginx root
 # We use this because your index.html is in 'skillforge/browse/'
-COPY skillforge/browse/ /usr/share/nginx/html/
+COPY skillforge/browser/ /usr/share/nginx/html/
 
 # 4. Permissions
 RUN chown -R nginx:nginx /usr/share/nginx/html && \
