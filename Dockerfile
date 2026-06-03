@@ -3,18 +3,15 @@ FROM nginx:alpine
 # 1. Clear default
 RUN rm -rf /usr/share/nginx/html/*
 
-# 2. DEBUG: List files to confirm the path exists
-#RUN ls -R skillforge
+# 2. Copy contents to a subfolder named 'app'
+# This creates /usr/share/nginx/html/app/
+COPY skillforge/browser/ /usr/share/nginx/html/app/
 
-# 3. Copy contents of the browse folder to the nginx root
-# We use this because your index.html is in 'skillforge/browse/'
-COPY skillforge/browser/ /usr/share/nginx/html/
-
-# 4. Permissions
+# 3. Permissions
 RUN chown -R nginx:nginx /usr/share/nginx/html && \
     chmod -R 755 /usr/share/nginx/html
 
-# 5. Config
+# 4. Config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
