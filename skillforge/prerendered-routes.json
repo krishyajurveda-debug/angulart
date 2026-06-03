@@ -1,7 +1,0 @@
-{
-  "routes": {
-    "/app": {},
-    "/app/callback": {},
-    "/app/terms": {}
-  }
-}
